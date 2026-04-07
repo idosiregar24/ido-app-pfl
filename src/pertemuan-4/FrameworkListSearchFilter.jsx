@@ -3,11 +3,27 @@ import frameworkData from "./framework.json";
 
 export default function FrameworkList() {
   /** Deklarasi state **/
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTag, setSelectedTag] = useState("");
+  // const [searchTerm, setSearchTerm] = useState("");
+  // const [selectedTag, setSelectedTag] = useState("");
+
+  /*Inisialisasi DataForm*/
+  const [dataForm, setDataForm] = useState({
+    searchTerm: "",
+    selectedTag: "",
+    /*Tambah state lain beserta default value*/
+  });
+
+  /*Inisialisasi Handle perubahan nilai input form*/
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setDataForm({
+      ...dataForm,
+      [name]: value,
+    });
+  };
 
   /** Deklarasi Logic Search & Filter **/
-  const _searchTerm = searchTerm.toLowerCase();
+  const _searchTerm = dataForm.searchTerm.toLowerCase();
   const filteredFrameworks = frameworkData.filter((framework) => {
     const name = framework.name?.toLowerCase() || "";
     const developer = framework.details.developer?.toLowerCase() || "";
@@ -20,8 +36,8 @@ export default function FrameworkList() {
       releaseYear.includes(_searchTerm) ||
       description.includes(_searchTerm);
 
-    const matchesTag = selectedTag
-      ? framework.tags?.includes(selectedTag)
+    const matchesTag = dataForm.selectedTag
+      ? framework.tags?.includes(dataForm.selectedTag)
       : true;
 
     return matchesSearch && matchesTag;
@@ -75,17 +91,19 @@ export default function FrameworkList() {
             </svg>
             <input
               type="text"
+              name="searchTerm"
               placeholder="Search framework..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              value={dataForm.searchTerm}
+              onChange={handleChange}
               className="w-full pl-12 pr-4 py-3.5 bg-white border border-slate-200/80 rounded-2xl shadow-sm focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-400 transition-all text-slate-700 placeholder:text-slate-400 font-medium"
             />
           </div>
 
           <div className="relative sm:w-64">
             <select
-              value={selectedTag}
-              onChange={(e) => setSelectedTag(e.target.value)}
+              name="selectedTag"
+              value={dataForm.selectedTag}
+              onChange={handleChange}
               className="w-full pl-4 pr-10 py-3.5 bg-white border border-slate-200/80 rounded-2xl shadow-sm focus:outline-none focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-400 transition-all text-slate-700 appearance-none cursor-pointer font-medium"
             >
               <option value="">All Categories</option>
