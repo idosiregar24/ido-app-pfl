@@ -9,7 +9,6 @@ createRoot(document.getElementById("root")).render(
   <div>
     {/* <TailwindCSS /> */}
     <FrameworkList />
-    
     {/* <ResponsiveDesign/> */}
     {/* <FrameworkListSearchFilter /> */}
   </div>,
