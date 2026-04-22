@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import Orders from "./pages/Orders";
 import Customers from "./pages/Customers";
 import NotFound from "./pages/NotFound";
+import ErrorPage, { ERROR_CONFIG } from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -29,6 +30,20 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/customers" element={<Customers />} />
+              
+              {/* Error Routes */}
+              <Route path="/error/400" element={
+                <ErrorPage {...ERROR_CONFIG[400]} />
+              } />
+              <Route path="/error/401" element={
+                <ErrorPage {...ERROR_CONFIG[401]} />
+              } />
+              <Route path="/error/403" element={
+                <ErrorPage {...ERROR_CONFIG[403]} />
+              } />
+              <Route path="/error/404" element={
+                <ErrorPage {...ERROR_CONFIG[404]} />
+              } />
             </Routes>
           </div>
         </div>
