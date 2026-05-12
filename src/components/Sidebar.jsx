@@ -60,6 +60,12 @@ export default function Sidebar() {
                             <span>Error 403</span>
                         </NavLink>
                     </li>
+                    <li>
+                        <NavLink id="menu-produk" to="/produk" className={menuClass}>
+                            <MdShoppingCart className="mr-4 text-xl" />
+                            <span>Produk</span>
+                        </NavLink>
+                    </li>
                 </ul>
             </div>
 

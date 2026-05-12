@@ -1,11 +1,12 @@
 import { Suspense, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./assets/tailwind.css";
+  import "./assets/tailwind.css";
 
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Loading from "./components/Loading";
+
 // import { ERROR_CONFIG } from "./pages/ErrorPage";
 
 // import Orders from "./pages/Orders";
@@ -25,6 +26,8 @@ const AuthLayout = React.lazy(() => import("./layouts/AuthLayout"));
 const Login = React.lazy(() => import("./pages/auth/Login"));
 const Register = React.lazy(() => import("./pages/auth/Register"));
 const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
+const Produk = React.lazy(() => import("./pages/Produk"));
+const ProductDetail = React.lazy(() => import("./pages/ProductDetail.jsx"))
 
 function App() {
   return (
@@ -35,6 +38,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/customers" element={<Customers />} />
+          <Route path="/produk" element={<Produk />} />
 
           {/* Error Routes */}
           <Route
@@ -77,6 +81,7 @@ function App() {
               />
             }
           />
+          <Route path="/products/:id" element={<ProductDetail />} />
         </Route>
         <Route element={<AuthLayout />}>
           <Route path="/login" element={<Login />} />
