@@ -104,7 +104,7 @@ export default function Components() {
                 </Container>
             </div>
 
-            {/* 9. Footer Component wrapper to pull it full-width to the edges of the parent padding */}
+            {/* 9. Footer */}
             <div className="-mx-4 -mb-4 mt-10">
                 <Footer />
             </div>
