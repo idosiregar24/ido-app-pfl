@@ -1,4 +1,4 @@
-import { MdDashboard, MdShoppingCart, MdPeople, MdAnalytics, MdAdd, MdErrorOutline, MdLockOutline, MdBlock } from "react-icons/md";
+import { MdDashboard, MdShoppingCart, MdPeople, MdAnalytics, MdAdd, MdErrorOutline, MdLockOutline, MdBlock, MdExtension } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 
 
@@ -41,7 +41,13 @@ export default function Sidebar() {
                             <MdPeople className="mr-4 text-xl" />
                             <span>Customers</span>
                         </NavLink>
-                    </li> 
+                    </li>
+                    <li>
+                        <NavLink id="menu-components" to="/components" className={menuClass}>
+                            <MdExtension className="mr-4 text-xl" />
+                            <span>Components</span>
+                        </NavLink>
+                    </li>
                     <li>
                         <NavLink id="menu-400" to="/error/400" className={menuClass}>
                             <MdErrorOutline className="mr-4 text-xl" />
